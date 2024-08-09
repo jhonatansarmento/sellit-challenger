@@ -6,10 +6,7 @@ import { generateUlid } from '@/utils/ulid';
 import { NextResponse } from 'next/server';
 
 export const POST = errorHandler(async (req: Request) => {
-  console.log('Handling POST request to create a product');
-
   const data = await req.json();
-  console.log('Received data:', data);
 
   const validationError = validateProductData(data);
   if (validationError) return validationError;
@@ -29,7 +26,6 @@ export const POST = errorHandler(async (req: Request) => {
     } = data;
 
     const id = generateUlid();
-    console.log('Generated ULID:', id);
 
     const updatedAtDate = new Date(updated_at);
     const createdAtDate = new Date(created_at);
@@ -50,8 +46,6 @@ export const POST = errorHandler(async (req: Request) => {
         created_at: createdAtDate,
       })
       .execute();
-
-    console.log('Product created:', result);
 
     return NextResponse.json(
       { message: 'Product created successfully' },

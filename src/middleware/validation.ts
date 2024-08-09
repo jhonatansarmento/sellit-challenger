@@ -26,7 +26,6 @@ export function validateProductData(data: any) {
     !updated_at ||
     !created_at
   ) {
-    console.log('Validation failed: Missing required fields');
     return NextResponse.json(
       { error: 'Missing required fields' },
       { status: 400 }
