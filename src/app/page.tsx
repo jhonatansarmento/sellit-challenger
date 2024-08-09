@@ -1,11 +1,5 @@
-export default async function Home() {
-  return (
-    <>
-      <h1>Hello</h1>
-      <h1>World</h1>
-    </>
-  );
-}
+import ProductList from './components/ProductList/ProductList';
 
-export const runtime = 'edge';
-export const preferredRegion = 'iad1';
+export default function HomePage() {
+  return <ProductList />;
+}
