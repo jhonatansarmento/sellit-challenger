@@ -1,36 +1,128 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Sellit Product Service
 
-## Getting Started
+Este repositório contém um serviço de backend desenvolvido para o desafio de backend da Sellit. O serviço oferece uma API RESTful para gerenciar produtos, permitindo a criação, consulta por ID e busca por nome ou fornecedor.
 
-First, run the development server:
+## Funcionalidades
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### 1. Criar Produto
+
+Endpoint para criar um novo produto com as seguintes informações:
+
+- `id`: Identificador único do produto (ULID).
+- `category_id`: Identificador único da categoria do produto (ULID).
+- `name`: Nome do produto ou serviço.
+- `description`: Descrição do produto ou serviço.
+- `producer_name`: Nome do produtor ou responsável pelo produto/serviço.
+- `producer_email`: Endereço de e-mail do produtor ou responsável.
+- `cover`: URL da imagem de capa do produto ou serviço.
+- `thumbnail`: URL da imagem em miniatura do produto ou serviço.
+- `price`: Preço do produto ou serviço.
+- `updated_at`: Data e hora da última atualização do registro (ISO 8601).
+- `created_at`: Data e hora da criação do registro (ISO 8601).
+
+### 2. Carregar Produto pelo ID
+
+Endpoint para recuperar um produto específico baseado no seu `id`.
+
+### 3. Buscar Produtos
+
+Endpoint para buscar produtos com base no nome (`name`) ou no nome do produtor (`producer_name`).
+
+## Tecnologias Utilizadas
+
+- **Next.js** com **TypeScript**: Framework de desenvolvimento.
+- **PostgreSQL**: Banco de dados utilizado para armazenar as informações dos produtos.
+- **Drizzle**: ORM utilizado para interagir com o banco de dados.
+- **ULID**: Identificador único para produtos e categorias.
+
+## Instalação e Execução
+
+### Pré-requisitos
+
+- Node.js v16+ instalado.
+- PostgreSQL instalado e configurado.
+
+### Passos para Rodar o Projeto Localmente
+
+1. Clone o repositório:
+
+   ```bash
+   git clone https://github.com/seu-usuario/sellit-product-service.git
+   cd sellit-product-service
+   ```
+
+2. Instale as dependências:
+
+   ```bash
+   npm install
+   ```
+
+3. Configure as variáveis de ambiente:
+
+   Crie um arquivo `.env` na raiz do projeto com as seguintes variáveis:
+
+   ```env
+   DATABASE_URL=postgresql://usuario:senha@localhost:5432/sellit
+   ```
+
+4. Execute as migrações do banco de dados:
+
+   ```bash
+   npx drizzle-kit migrate
+   ```
+
+5. Inicie o servidor de desenvolvimento:
+
+   ```bash
+   npm run dev
+   ```
+
+6. Acesse a aplicação em `http://localhost:3000`.
+
+### Documentação da API
+
+- **POST /api/products/create**: Cria um novo produto.
+- **GET /api/products/{{product_id}}**: Retorna os detalhes de um produto específico.
+- **GET /api/products/search?query={{producer_name}}**: Busca produtos com base no nome ou nome do produtor.
+
+### Colocando em Produção
+
+Para colocar o serviço em produção, siga estes passos:
+
+1. Configure o ambiente de produção, incluindo as variáveis de ambiente necessárias (`DATABASE_URL`).
+2. Compile a aplicação:
+   ```bash
+   npm run build
+   ```
+3. Inicie o servidor em modo de produção:
+
+   ```bash
+   npm start
+   ```
+
+4. Configure seu servidor para servir a aplicação em produção (NGINX, PM2, etc.).
+
+### Acessando o Serviço em Produção
+
+Caso prefira não rodar o projeto localmente, você pode acessar o serviço já em produção através da seguinte URL:
+
+[https://sellit-challenger.vercel.app/api/products](https://sellit-challenger.vercel.app/api/products)
+
+### Importando Rotas no Postman
+
+Para facilitar o teste da API, um arquivo de coleção do Postman foi exportado e está disponível no próprio projeto. Você pode encontrá-lo no seguinte caminho:
+
+```
+Product CRUD Operations.postman_collection.json
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Este arquivo pode ser importado diretamente no Postman para testar as rotas.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Considerações Finais
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Este projeto foi desenvolvido seguindo boas práticas de código, arquitetura limpa e padrões de design. Caso tenha alguma dúvida ou sugestão, fique à vontade para abrir uma issue.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Jhonatan Tibiquera Sarmento de Souza  
+[LinkedIn](https://www.linkedin.com/in/jhonatansarmento/) | [jsarmento.dev](https://www.jsarmento.dev/) | jhonatan.sarmento@gmail.com
