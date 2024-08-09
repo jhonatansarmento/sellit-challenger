@@ -47,7 +47,7 @@ Endpoint para buscar produtos com base no nome (`name`) ou no nome do produtor (
 1. Clone o repositório:
 
    ```bash
-   git clone https://github.com/seu-usuario/sellit-product-service.git
+   git clone https://github.com/jhonatansarmento/sellit-challenger
    cd sellit-product-service
    ```
 
