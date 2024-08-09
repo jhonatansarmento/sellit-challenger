@@ -65,6 +65,14 @@ Endpoint para buscar produtos com base no nome (`name`) ou no nome do produtor (
    DATABASE_URL=postgresql://usuario:senha@localhost:5432/sellit
    ```
 
+   **Nota:** Para fins de testes, você pode utilizar a seguinte string de conexão com o banco de dados:
+
+   ```env
+   DATABASE_URL=postgresql://neondb_owner:Lns8MfQG4jle@ep-shrill-field-a52ne7p0.us-east-2.aws.neon.tech/neondb?sslmode=require
+   ```
+
+   **Atenção:** Esta string de conexão é fornecida apenas para testes e não deve ser usada em produção.
+
 4. Execute as migrações do banco de dados:
 
    ```bash
